@@ -24,7 +24,7 @@
   },
   "include": [
     "src/*",
-    "example/*",
+    "example-original/*",
     "src/types/*",
   ],
   "exclude": [
