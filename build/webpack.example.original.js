@@ -23,10 +23,10 @@ Object.keys(ifaces).forEach(key => {
 const config = {
     mode: 'development',
     entry: [
-        resolve(`../example/${env}.ts`),
+        resolve(`../example-original/${env}.ts`),
     ],
     output: {
-        path: resolve('../example/dist'),
+        path: resolve('../example-original/dist'),
         filename: `${env}.js`,
     },
     plugins: [],
@@ -35,10 +35,10 @@ const config = {
 if (env === 'web') {
     config.plugins.push(new HtmlWebpackPlugin({
         inject: true,
-        template: resolve('../example/index.html'),
+        template: resolve('../example-original/index.html'),
     }))
     config.devServer =  {
-        contentBase: resolve('../example/dist'),
+        contentBase: resolve('../example-original/dist'),
         compress: false,
         port: port,
         open: true,
@@ -52,7 +52,7 @@ if (env === 'web') {
         __dirname: true,
     }
     config.plugins.push(new WebpackShellPlugin({
-        onBuildEnd: [`nodemon ./example/dist/${env}.js --watch`]
+        onBuildEnd: [`nodemon ./example-original/dist/${env}.js --watch`]
     }),)
 }
 
